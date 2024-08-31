@@ -1,6 +1,6 @@
-import Header from "./modules/Header";
+import Header from "#/modules/add-batch/header";
 
-export default function Transaction() {
+export default function AddBatch() {
     return (
         <section className="w-full">
             <Header />

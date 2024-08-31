@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#006EFF"
+        primary: "#006EFF",
+        foreground: "#0f172a"
       },
       fontFamily: {
         Inter: ["Inter", "sans-serif"]

@@ -1,4 +1,7 @@
 import { lazy } from "react";
 
-export const Product = lazy(() => import("@/pages/product"))
-export const Transaction = lazy(() => import("@/pages/transaction"))
+export const Products = lazy(() => import("./Products"))
+export const Items = lazy(() => import("./Items"))
+export const AddBatch = lazy(() => import("./Add-Batch"))
+
+export const Transactions = lazy(() => import("./Transactions"))

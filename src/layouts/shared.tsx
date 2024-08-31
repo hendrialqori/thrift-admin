@@ -1,8 +1,8 @@
 import { Suspense } from "react";
-import Sidebar from "./desktop/Sidebar";
+import { Sidebar } from "#/modules/sidebar";
 import { Outlet } from "react-router-dom"
 
-export default function Layout() {
+export default function SharedLayout() {
     return (
         <main className="flex font-Inter">
             <Sidebar />
