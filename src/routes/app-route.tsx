@@ -13,12 +13,20 @@ function appRoutes() {
         createRoutesFromElements(
             <React.Fragment>
                 <Route path="/" element={<SharedLayout />}>
-                    <Route path="/" element={<Navigate to="/products" />} />
+                    <Route index element={<Navigate to="/products" />} />
+                    
                     <Route path="products">
                         <Route index element={<Page.Products />} />
-                        <Route path=":productId/items" element={<Page.Items />} />
+
+                        <Route path=":productId/items">
+                            <Route index element={<Page.Items />} />
+
+                            <Route path=":itemId" element={<Page.ItemId />} />
+                        </Route>
+
                         <Route path="add" element={<Page.AddBatch />} />
                     </Route>
+                    
                     <Route path="transactions" element={<Page.Transactions />} />
                 </Route>
             </React.Fragment>
