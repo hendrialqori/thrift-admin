@@ -1,31 +1,37 @@
-import { InputSearch } from "#/components/ui/input";
+import { Input } from "#/components/ui/input";
+import { FiSearch } from "react-icons/fi";
 import { useSearchParams } from "react-router-dom";
-
-const defaultParams = {
-    name: ""
-}
+import { NAME_PARAMS } from "#/constant";
 
 export default function InputSearchItems() {
-    const [searchParams, setSearchParams] = useSearchParams(defaultParams)
+    const [searchParams, setSearchParams] = useSearchParams()
 
-    const name = searchParams.get("name") as string
+    const name = searchParams.get(NAME_PARAMS) as string
 
-    function handleSetParams(e: React.ChangeEvent<HTMLInputElement>) {
+    function setParams(e: React.ChangeEvent<HTMLInputElement>) {
         const value = e.target.value
         setSearchParams((prev) => {
-            prev.set("name", value)
+            prev.set(NAME_PARAMS, value)
             return prev
-
-        }, { replace: true })
+        })
     }
 
     return (
-        <InputSearch
-            value={name}
-            onChange={handleSetParams}
-            placeholder="Search.."
-            wrapperClass="w-full lg:w-1/2 xl:w-1/3"
-        />
+        <div className="relative w-full lg:w-1/2 xl:w-1/3">
+            <Input 
+                value={name} 
+                onChange={setParams}
+                placeholder="search.." 
+                className="px-10"/>
+            <span
+                className="absolute top-1/2 -translate-y-1/2 left-3"
+                aria-hidden="true"
+                role="presentation"
+            >
+                <FiSearch className="text-lg" />
+            </span>
+        </div>
     )
+
 
 }

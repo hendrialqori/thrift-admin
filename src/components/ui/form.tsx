@@ -4,7 +4,7 @@ import React from "react"
 export const Form = React.forwardRef<HTMLFormElement, React.ComponentPropsWithoutRef<"form">>(
     ({ className, ...props }, refs) => {
         return (
-            <form ref={refs} className={cn("space-y-2", className)} {...props} />
+            <form ref={refs} className={cn("space-y-6", className)} {...props} />
         )
     })
 
@@ -26,7 +26,7 @@ export const FormItem = React.forwardRef<HTMLDivElement, FormItemProps>(
 export const FormLabel = React.forwardRef<HTMLLabelElement, React.ComponentPropsWithoutRef<"label">>(
     ({ className, ...props }, refs) => {
         return (
-            <label ref={refs} className={cn("text-sm", className)} {...props} />
+            <label ref={refs} className={cn("text-[0.8rem] font-medium select-none", className)} {...props} />
         )
     })
 

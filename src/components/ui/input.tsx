@@ -1,34 +1,46 @@
 import React from "react"
 import { cn, merge } from "#/lib/utils";
-import { FiSearch } from "react-icons/fi";
+import { Popover, PopoverContent, PopoverTrigger } from "./popover";
+import { Calendar } from "./calendar";
+import { IoCalendarClearOutline } from "react-icons/io5";
 
-export const Input = React.forwardRef<HTMLInputElement, React.ComponentPropsWithoutRef<"input">>(({ className, ...props }, refs) => {
-    return (
-        <input
+export const Input = React.forwardRef<HTMLInputElement, React.ComponentPropsWithoutRef<"input">>(
+   ({ className, ...props }, refs) => {
+      return (
+         <input
             ref={refs}
             className={merge(
-                cn(
-                    "block w-full rounded-lg text-sm h-10",
-                    "bg-[#F4F4F4] border border-[#EDEDF0] focus:border-[#EDEDF0] focus:bg-white focus:ring-2 focus:ring-black",
-                    "px-3 py-2 placeholder:text-sm placeholder:font-light",
-                    className)
+               cn(
+                  "block w-full rounded-lg text-sm h-10 px-3 py-2 placeholder:text-gray-500 placeholder:text-sm bg-background",
+                  "border border-[#EDEDF0] focus:border-[#EDEDF0] focus:bg-white focus:ring-2 focus:ring-offset-2 focus:ring-black",
+                  className)
             )}
             {...props}
-        />
-    )
-})
+         />
+      )
+   })
 
-export const InputSearch = React.forwardRef<HTMLInputElement, React.ComponentPropsWithoutRef<"input"> & { wrapperClass?: string }>(({ wrapperClass, className, ...props }, refs) => {
-    return (
-        <div className={cn("relative", wrapperClass)}>
-            <Input ref={refs} {...props} className="px-10" />
-            <span
-                className="absolute top-1/2 -translate-y-1/2 left-3"
-                aria-hidden="true"
-                role="presentation"
-            >
-                <FiSearch className="text-lg" />
-            </span>
-        </div>
-    )
-})
+export const InputDate = ({ selected, onSelect }: { selected: Date, onSelect: (date: Date | undefined) => void }) => {
+   return (
+      <Popover>
+         <PopoverTrigger asChild>
+            <button className={cn(
+               "w-full rounded-lg text-sm h-10 px-3 py-2 bg-background",
+               "border border-[#EDEDF0] focus:border-[#EDEDF0] focus:bg-white focus:ring-2 focus:ring-offset-2 focus:ring-black",
+               "flex justify-between items-center"
+            )}>
+               <span>Pick a date</span>
+               <IoCalendarClearOutline className="text-gray-500" />
+            </button>
+         </PopoverTrigger>
+         <PopoverContent>
+            <Calendar
+               mode="single"
+               selected={selected}
+               onSelect={onSelect}
+               className="w-full"
+            />
+         </PopoverContent>
+      </Popover>
+   )
+}

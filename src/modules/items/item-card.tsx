@@ -2,10 +2,6 @@ import { Image } from "#/components/ui/image"
 import { Link, useParams } from "react-router-dom"
 import { FaArrowRight } from "react-icons/fa6";
 
-type Props = {
-    id: string
-    image: string;
-}
 
 export default function ItemCard() {
     const { productId } = useParams()
@@ -13,8 +9,8 @@ export default function ItemCard() {
     const to = "/products/" + productId + "/items/" + 1
 
     return (
-        <Link to={to}>
-            <figure className="relative w-max">
+        <Link to={to} className="w-max">
+            <figure className="relative">
                 <Image
                     src="/baju.jpg"
                     alt="item-card"

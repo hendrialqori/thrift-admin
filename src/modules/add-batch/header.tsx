@@ -1,5 +1,3 @@
-import { Button } from "#/components/ui/button";
-import { IoMdAdd } from "react-icons/io";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbPage, BreadcrumbSeparator } from "#/components/ui/breadcrumb";
 import { Link } from "react-router-dom";
 
@@ -19,12 +17,6 @@ export default function Header() {
                     </BreadcrumbPage>
                 </BreadcrumbItem>
             </Breadcrumb>
-            <Button variant="secondary">
-                <div className="flex items-center gap-x-4">
-                    <IoMdAdd className="text-xl" />
-                    <span>Add new batch</span>
-                </div>
-            </Button>
         </header>
     )
 }
