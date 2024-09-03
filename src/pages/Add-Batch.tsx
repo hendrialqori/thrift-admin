@@ -1,13 +1,14 @@
+import React from "react";
 import BatchForm from "#/modules/add-batch/form";
 import Header from "#/modules/add-batch/header";
 
 export default function AddBatch() {
     return (
-        <section className="w-full">
+        <React.Fragment>
             <Header />
-            <div className="p-9 w-5/12">
+            <div className="p-9 max-w-2xl">
                 <BatchForm />
             </div>
-        </section>
+        </React.Fragment>
     )
 }

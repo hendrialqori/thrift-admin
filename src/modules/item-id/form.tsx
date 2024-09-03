@@ -15,6 +15,7 @@ import { type FormErrors } from "#/@types/global";
 import { GENDER, IS_UPDATE_ITEM_PARAMS, SIZE } from "#/constant";
 import * as Utils from "#/lib/utils"
 import { useSearchParams } from "react-router-dom";
+import useFormError from "#/hooks/use-form-error";
 
 const initialForm = {
     id: "",
@@ -27,10 +28,12 @@ const initialForm = {
 
 export default function ItemForm() {
     let [form, setForm] = React.useState(initialForm)
-    let [formErrors, setFormErrors] = React.useState({} as FormErrors)
     const [searchParams, setSearchParams] = useSearchParams()
+    const formError = useFormError()
 
     const isUpdate = JSON.parse(searchParams.get(IS_UPDATE_ITEM_PARAMS)!)
+
+    const retrieveError = formError.retrieve<keyof typeof form>
 
     // cencel/close update form
     function closeUpdate() {
@@ -43,24 +46,18 @@ export default function ItemForm() {
     // submit form actions
     function submit(e: React.SyntheticEvent) {
         e.preventDefault()
+
+        //intially clear
+        formError.clear()
+
         try {
             const dataValidation = itemFormScheme.parse(form)
-            console.log(dataValidation)
 
         } catch (error) {
             if (error instanceof ZodError) {
                 const fieldErrors = error.flatten().fieldErrors
-                setFormErrors(fieldErrors as unknown as FormErrors)
+                formError.catches(fieldErrors as unknown as FormErrors)
             }
-        }
-    }
-
-    // error handlers return isError & message
-    function error(field: keyof Omit<typeof form, "id" | "qrCode">) {
-        const fieldError = formErrors[field]
-        return {
-            isError: !!fieldError,
-            message: fieldError?.join(", ")
         }
     }
 
@@ -94,7 +91,7 @@ export default function ItemForm() {
                                 ))}
                             </SelectContent>
                         </Select>
-                        <FormFieldError hasError={error("size").isError}>{error("size").message}</FormFieldError>
+                        <FormFieldError>{retrieveError("size").message}</FormFieldError>
                     </React.Fragment>
                 )}
             </FormItem>
@@ -119,9 +116,7 @@ export default function ItemForm() {
                                 </SelectContent>
                             </SelectContent>
                         </Select>
-                        <FormFieldError hasError={error("gender").isError}>
-                            {error("gender").message}
-                        </FormFieldError>
+                        <FormFieldError>{retrieveError("gender").message}</FormFieldError>
                     </React.Fragment>
                 )}
             </FormItem>
@@ -138,9 +133,7 @@ export default function ItemForm() {
                             placeholder="Quantity"
                             disabled={!isUpdate}
                         />
-                        <FormFieldError hasError={error("quantity").isError}>
-                            {error("quantity").message}
-                        </FormFieldError>
+                        <FormFieldError>{retrieveError("quantity").message}</FormFieldError>
                     </React.Fragment>
                 )}
             </FormItem>
@@ -166,9 +159,7 @@ export default function ItemForm() {
                             placeholder="Rp."
                             disabled={!isUpdate}
                         />
-                        <FormFieldError hasError={error("price").isError}>
-                            {error("price").message}
-                        </FormFieldError>
+                        <FormFieldError>{retrieveError("price").message}</FormFieldError>
                     </React.Fragment>
                 )}
             </FormItem>
@@ -179,19 +170,17 @@ export default function ItemForm() {
                         type="reset"
                         onClick={() => {
                             closeUpdate()
-                            setFormErrors({})
+                            formError.clear()
                         }}
                     >
-                        <div className="flex items-center gap-x-3">
+                        {/* <div className="flex items-center gap-x-3">
                             <IoMdClose className="text-xl" />
                             <span>Cencel</span>
-                        </div>
+                        </div> */}
+                        Cencel
                     </Button>
                     <Button type="submit">
-                        <div className="flex items-center gap-x-3">
-                            <TbPencil className="text-xl" />
-                            <span>Update</span>
-                        </div>
+                        Save changes
                     </Button>
                 </div>
             )}

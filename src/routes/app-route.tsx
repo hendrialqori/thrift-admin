@@ -14,7 +14,7 @@ function appRoutes() {
             <React.Fragment>
                 <Route path="/" element={<SharedLayout />}>
                     <Route index element={<Navigate to="/products" />} />
-                    
+
                     <Route path="products">
                         <Route index element={<Page.Products />} />
 
@@ -26,8 +26,14 @@ function appRoutes() {
 
                         <Route path="add" element={<Page.AddBatch />} />
                     </Route>
-                    
-                    <Route path="transactions" element={<Page.Transactions />} />
+
+                    <Route path="transactions">
+                        <Route index element={<Page.Transactions />} />
+
+                        <Route path=":transactionId" element={<Page.TransactionId />} />
+
+                        <Route path="add" element={<Page.AddTransaction />} />
+                    </Route>
                 </Route>
             </React.Fragment>
         )

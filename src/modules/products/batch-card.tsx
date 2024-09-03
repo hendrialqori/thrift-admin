@@ -8,7 +8,7 @@ type Props = {
     date: string;
 }
 
-export const BatchCard = () => {
+export default function BatchCard() {
     return (
         <Link to={`/products/1/items`} aria-label="batch-card">
             <div className="w-full flex justify-between items-center border border-[#EDEDF0] p-8 rounded-2xl hover:bg-[#F8F8F8] transition duration-300">

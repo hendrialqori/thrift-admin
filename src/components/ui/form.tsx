@@ -30,19 +30,16 @@ export const FormLabel = React.forwardRef<HTMLLabelElement, React.ComponentProps
         )
     })
 
-type FormFieldErrorProps = React.ComponentPropsWithoutRef<"p"> & {
-    hasError: boolean
+export const FormFieldError = ({ children, className, ...props }: React.ComponentPropsWithoutRef<"p">) => {
+    if (!Boolean(children)) return null
+    
+    return (
+        <p className={cn("text-red-500 text-[0.8rem] font-medium", className)}
+            {...props}>
+            {children}
+        </p>
+    )
 }
-
-export const FormFieldError = React.forwardRef<HTMLParagraphElement, FormFieldErrorProps>(
-    ({ hasError, className, ...props }, refs) => {
-
-        if (!hasError) return null
-
-        return (
-            <p ref={refs} className={cn("text-red-500 text-[0.8rem] font-medium", className)} {...props} />
-        )
-    })
 
 export const FormFielDescription = React.forwardRef<HTMLSpanElement, React.ComponentPropsWithoutRef<"span">>(
     ({ className, ...props }, refs) => {

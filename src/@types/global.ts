@@ -1,3 +1,5 @@
 export type FormErrors = {
-    [field: string]: string[]
+    [x: string]: string[] | undefined;
+    [x: number]: string[] | undefined;
+    [x: symbol]: string[] | undefined;
 }

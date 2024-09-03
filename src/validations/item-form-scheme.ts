@@ -9,8 +9,8 @@ export const itemFormScheme = z.object({
     gender: z.enum(CONST.GENDER, {
         errorMap: () => ({ message: "Please select your gender" })
     }),
-    quantity: z.number()
-        .min(1, { message: "Requied" }),
+    quantity: z.number({ invalid_type_error: "Required" })
+        .min(1, { message: "Required" }),
     price: z.string()
         .min(1, { message: "Required" })
         .transform((str) => Number(str.replace(/\./g, '')))
