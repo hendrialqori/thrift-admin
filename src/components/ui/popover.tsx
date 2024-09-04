@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import * as PopoverPrimitive from "@radix-ui/react-popover"
+import { merge } from "#/lib/utils"
 
 import { cn } from "#/lib/utils"
 
@@ -18,10 +19,10 @@ const PopoverContent = React.forwardRef<
       ref={ref}
       align={align}
       sideOffset={sideOffset}
-      className={cn(
-        "z-50 w-96 rounded-md border bg-popover p-4 text- shadow-md outline-none",
+      className={merge(cn(
+        "z-50 w-96 rounded-md border p-4 bg-white shadow-md outline-none",
         className
-      )}
+      ))}
       {...props}
     />
   </PopoverPrimitive.Portal>

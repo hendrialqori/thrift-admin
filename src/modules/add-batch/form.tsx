@@ -68,7 +68,7 @@ export default function BatchForm() {
                                 // get input value
                                 const value = e.target.value
                                 // sanitize from chars
-                                const sanitize = Utils.sanitized(value)
+                                const sanitize = Utils.sanitizedNonDigits(value)
                                 // format into indonesia number format 
                                 const priceFormat = String(Utils.numberFormat(sanitize))
 
