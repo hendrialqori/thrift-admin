@@ -3,14 +3,15 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot"
 import { cn } from "#/lib/utils";
 
-const buttonVariants = cva("flex justify-center items-center rounded-md", {
+const buttonVariants = cva("flex justify-center items-center rounded-xl", {
     variants: {
         variant: {
             primary: "bg-primary active:outline outline-blue-600 text-white",
-            secondary: "bg-[#F8F8F8] hover:bg-gray-100 border border-[#EDEDF0] active:outline outline-gray-300 text-black"
+            secondary: "bg-[#F8F8F8] hover:bg-gray-100 border border-[#EDEDF0] active:outline outline-gray-300 text-black",
+            desctruction: "bg-red-600 active:outline outline-red-700 text-white"
         },
         size: {
-            default: "py-2 px-3 text-sm",
+            default: "py-2 px-4 text-sm",
             sm: "text-xs"
         }
     },

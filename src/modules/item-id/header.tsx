@@ -6,7 +6,7 @@ import { IS_UPDATE_ITEM_PARAMS } from "#/constant";
 
 export default function Header() {
     const { productId, itemId } = useParams()
-    const [_, setSearchParams] = useSearchParams({ [IS_UPDATE_ITEM_PARAMS]: "" })
+    const [_, setSearchParams] = useSearchParams()
 
     function setParams() {
         setSearchParams((prev) => {

@@ -2,6 +2,8 @@ import React from "react";
 import DatePicker from "#/modules/transactions/date-picker";
 import Header from "#/modules/transactions/header";
 import InputSearchTransactions from "#/modules/transactions/input-search-transactions";
+import TransactionCard from "#/modules/transactions/transaction-card";
+import TransactionList from "#/modules/transactions/transaction-list";
 
 export default function Transaction() {
     return (
@@ -13,6 +15,12 @@ export default function Transaction() {
                     <DatePicker />
                 </div>
             </div>
+            <TransactionList>
+                <TransactionCard />
+                <TransactionCard />
+                <TransactionCard />
+                <TransactionCard />
+            </TransactionList>
         </React.Fragment>
     )
 }

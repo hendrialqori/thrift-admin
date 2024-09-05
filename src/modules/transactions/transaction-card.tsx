@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Image } from "#/components/ui/image"
 
 type Props = {
@@ -9,8 +9,15 @@ type Props = {
 }
 
 export default function TransactionCard() {
+    const navigate = useNavigate()
+    const navigateTo = () => navigate(`/transactions/49rj2p3oifm`)
+
     return (
-        <figure className="rounded-2xl flex size-full overflow-hidden min-h-52">
+        <figure
+            className="rounded-2xl flex size-full overflow-hidden min-h-52 cursor-pointer"
+            onClick={navigateTo}
+            aria-label="transaction-card"
+        >
             <div className="w-5/12">
                 <img
                     src="/baju-1.jpg"
@@ -18,7 +25,7 @@ export default function TransactionCard() {
                     className="size-full object-cover"
                 />
             </div>
-            <figcaption className="w-7/12 h-full bg-background pl-4 flex flex-col justify-center items-start space-y-2">
+            <figcaption className="w-7/12 h-full bg-background pl-4 flex flex-col justify-center items-start space-y-1">
                 <Item
                     label="Name"
                     value="Hendri Alqori"

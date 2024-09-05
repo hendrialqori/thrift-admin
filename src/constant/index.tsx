@@ -10,6 +10,8 @@ export const NAME_PARAMS = "name"
 
 export const IS_UPDATE_ITEM_PARAMS = "is_update_item"
 
+export const IS_UPDATE_TRANSACTION_PARAMS = "is_update_transaction"
+
 export const FILTER_BY_PARAMS = "filter_by"
 
 export const START_DATE_PARAMS = "start_date"

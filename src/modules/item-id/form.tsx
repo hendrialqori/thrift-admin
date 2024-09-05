@@ -5,9 +5,6 @@ import { Input } from "#/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "#/components/ui/select";
 import { Button } from "#/components/ui/button";
 
-import { TbPencil } from "react-icons/tb";
-import { IoMdClose } from "react-icons/io";
-
 import { ZodError } from "zod"
 import { itemFormScheme } from "#/validations/item-form-scheme"
 
@@ -149,7 +146,7 @@ export default function ItemForm() {
                                 // get input value
                                 const value = e.target.value
                                 // sanitize from chars
-                                const sanitize = Utils.sanitized(value)
+                                const sanitize = Utils.sanitizedNonDigits(value)
                                 // format into indonesia number format 
                                 const priceFormat = String(Utils.numberFormat(sanitize))
 
