@@ -10,12 +10,12 @@ export const StickyMenu = () => {
     return (
         <nav className="xl:hidden flex fixed left-0 right-0 bottom-0">
             <NavItem path="/products" identity="products">
-                <PiTShirt className="text-2xl" />
-                <span className="text-sm" aria-hidden role="presentation">Product</span>
+                <PiTShirt className="text-lg md:text-2xl" />
+                <span className="text-xs md:text-sm" aria-hidden role="presentation">Product</span>
             </NavItem>
             <NavItem path="/transactions" identity="transactions">
-                <PiCurrencyCircleDollar className="text-2xl" />
-                <span className="text-sm" aria-hidden role="presentation">Transaction</span>
+                <PiCurrencyCircleDollar className="text-lg md:text-2xl" />
+                <span className="text-xs md:text-sm" aria-hidden role="presentation">Transaction</span>
             </NavItem>
         </nav>
     )
@@ -41,7 +41,7 @@ const NavItem = ({ path, identity, children }: {
             onClick={handleActive}
             className="flex-1"
         >
-            <div className={cn(" justify-center py-1.5 flex flex-col items-center", activeClasss)}>
+            <div className={cn(" justify-center py-1 md:py-1.5 flex flex-col items-center", activeClasss)}>
                 {children}
             </div>
         </Link>

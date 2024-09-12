@@ -6,7 +6,7 @@ export default function AddBatch() {
     return (
         <React.Fragment>
             <Header />
-            <div className="p-bodyPaddingMd xl:p-bodyPadding max-w-2xl mt-4 xl:mt-0 mx-auto xl:mx-[0]">
+            <div className="p-bodyPaddingMd xl:p-bodyPadding max-w-2xl mt-4 xl:mt-0 mx-auto xl:mx-[0] mb-40 xl:mb-0">
                 <BatchForm />
             </div>
         </React.Fragment>

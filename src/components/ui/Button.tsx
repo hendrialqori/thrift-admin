@@ -11,7 +11,7 @@ const buttonVariants = cva("flex justify-center items-center rounded-lg", {
             desctruction: "bg-red-600 active:outline outline-red-700 text-white"
         },
         size: {
-            default: "py-2 px-4 text-sm",
+            default: "py-2 px-4 text-xs md:text-sm",
         }
     },
     defaultVariants: {

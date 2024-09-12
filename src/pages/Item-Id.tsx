@@ -15,12 +15,14 @@ export default function ItemId() {
     return (
         <React.Fragment>
             <Header />
-            <div className="p-bodyPaddingMd xl:p-bodyPadding grid grid-cols-6 gap-4 xl:gap-0 mt-4 xl:mt-0">
-                <div className="col-span-2 flex flex-col items-center justify-center space-y-5 h-max">
-                    <Image
+            <div className="p-bodyPaddingMd xl:p-bodyPadding mt-4
+                 xl:mt-0 grid grid-cols-6 gap-4 xl:gap-20 pb-40 xl:pb-0">
+                <div className="col-span-6 md:col-span-2 
+                    flex flex-col items-center justify-center space-y-5 h-max">
+                    <img
                         src="/baju.jpg"
                         alt="item-card"
-                        className="size-full rounded-lg"
+                        className="w-full h-48 md:size-full object-cover rounded-lg"
                     />
                     {!isUpdateItem && (
                         <div className="flex items-center justify-center gap-7">

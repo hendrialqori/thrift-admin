@@ -1,5 +1,4 @@
-import { Link, useNavigate } from "react-router-dom"
-import { Image } from "#/components/ui/image"
+import { useNavigate } from "react-router-dom"
 
 type Props = {
     image: string;
@@ -50,10 +49,10 @@ export default function TransactionCard() {
 function Item(props: { label: string, value: string }) {
     return (
         <div className="font-medium -space-y-1">
-            <span className="text-[0.8rem] text-gray-600" role="presentation" aria-hidden>
+            <span className="text-[0.6rem] md:text-[0.8rem] text-gray-600" role="presentation" aria-hidden>
                 {props.label}
             </span>
-            <p className="text-sm">{props.value}</p>
+            <p className="text-[0.8rem] md:text-sm">{props.value}</p>
         </div>
     )
 }

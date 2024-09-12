@@ -35,7 +35,7 @@ export default function DatePicker() {
             classNames={{
                 container: () => "",
                 input: () => cn(
-                    "h-10 w-full bg-background text-sm rounded-lg",
+                    "h-10 px-3 py-3 md:py-2 w-full bg-background text-xs md:text-sm rounded-lg",
                     "border border-[#EDEDF0] focus:border-[#EDEDF0] focus:bg-white focus:ring-2 focus:ring-offset-2 focus:ring-black",
                 ),
                 toggleButton: ({ className }: any) => cn("[&>svg]:stroke-black", className)

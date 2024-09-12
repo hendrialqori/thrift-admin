@@ -14,6 +14,7 @@ import * as Utils from "#/lib/utils"
 import { ZodError } from "zod";
 import { transactionFormScheme } from "#/validations/transaction-form-scheme"
 import { FaCheck } from "react-icons/fa6";
+import { OverlayLoading } from "#/components/ui/lazy";
 
 const initialForm = {
     id: "",
@@ -59,124 +60,126 @@ export default function TransactionForm() {
     }
 
     return (
-        <Form onSubmit={submit}>
-            <FormItem>
-                {(itemId) => (
-                    <React.Fragment>
-                        <FormLabel htmlFor={itemId}>ID</FormLabel>
-                        <Input
-                            id={itemId}
-                            placeholder="Id of batch"
-                            value={form.id}
-                            onChange={((e) => setForm((prev) => ({ ...prev, id: e.target.value })))}
-                        />
-                        <FormFieldError>{retrieveError("id").message}</FormFieldError>
-                    </React.Fragment>
-                )}
-            </FormItem>
-            <FormItem>
-                {(itemId) => (
-                    <React.Fragment>
-                        <FormLabel htmlFor={itemId}>Customer name</FormLabel>
-                        <div className="relative">
+        <React.Fragment>
+            <Form onSubmit={submit}>
+                <FormItem>
+                    {(itemId) => (
+                        <React.Fragment>
+                            <FormLabel htmlFor={itemId}>ID</FormLabel>
                             <Input
                                 id={itemId}
-                                placeholder="Customer name"
-                                onFocus={toggle}
-                                // onBlur={toggle}
-                                value={form.customer_name}
-                                onChange={(e) => setForm((prev) => ({ ...prev, customer_name: e.target.value }))}
+                                placeholder="Id of batch"
+                                value={form.id}
+                                onChange={((e) => setForm((prev) => ({ ...prev, id: e.target.value })))}
                             />
-                            <span className="absolute right-2 top-1/2 -translate-y-1/2">
-                                <CgSpinner className="animate-spin text-2xl" />
-                            </span>
-                            <Options isShow={active} onChange={selectOption} />
+                            <FormFieldError>{retrieveError("id").message}</FormFieldError>
+                        </React.Fragment>
+                    )}
+                </FormItem>
+                <FormItem>
+                    {(itemId) => (
+                        <React.Fragment>
+                            <FormLabel htmlFor={itemId}>Customer name</FormLabel>
+                            <div className="relative">
+                                <Input
+                                    id={itemId}
+                                    placeholder="Customer name"
+                                    onFocus={toggle}
+                                    // onBlur={toggle}
+                                    value={form.customer_name}
+                                    onChange={(e) => setForm((prev) => ({ ...prev, customer_name: e.target.value }))}
+                                />
+                                <span className="absolute right-2 top-1/2 -translate-y-1/2">
+                                    <CgSpinner className="animate-spin text-2xl" />
+                                </span>
+                                <Options isShow={active} onChange={selectOption} />
+                            </div>
+                            <FormFieldError>{retrieveError("customer_name").message}</FormFieldError>
+                        </React.Fragment>
+                    )}
+                </FormItem>
+                <FormItem>
+                    {(itemId) => (
+                        <React.Fragment>
+                            <FormLabel htmlFor={itemId}>Date</FormLabel>
+                            <Input
+                                id={itemId}
+                                type="date"
+                                value={dayjs(form.date).format("YYYY-MM-DD")}
+                                onChange={(e) => {
+                                    const date = e.target.valueAsDate!
+                                    setForm((prev) => ({ ...prev, date }))
+                                }}
+                            />
+                            <FormFieldError>{retrieveError("date").message}</FormFieldError>
+                        </React.Fragment>
+                    )}
+                </FormItem>
+                <FormItem>
+                    {(itemId) => (
+                        <React.Fragment>
+                            <FormLabel htmlFor={itemId}>Phone</FormLabel>
+                            <Input
+                                id={itemId}
+                                value={form.phone}
+                                onChange={(e) => {
+                                    const value = e.target.value
+                                    const sanitize = Utils.sanitizedNonDigits(value)
+                                    const phone = Utils.phoneFormat(sanitize)
+                                    setForm((prev) => ({ ...prev, phone }))
+                                }}
+                            />
+                            <FormFieldError>{retrieveError("phone").message}</FormFieldError>
+                        </React.Fragment>
+                    )}
+                </FormItem>
+                <FormItem>
+                    {(itemId) => (
+                        <React.Fragment>
+                            <FormLabel htmlFor={itemId}>Receipt number</FormLabel>
+                            <Input
+                                id={itemId}
+                                value={form.receipt_number}
+                                onChange={(e) => {
+                                    const receipt_number = e.target.value!
+                                    setForm((prev) => ({ ...prev, receipt_number }))
+                                }}
+                            />
+                            <FormFieldError>{retrieveError("receipt_number").message}</FormFieldError>
+                        </React.Fragment>
+                    )}
+                </FormItem>
+                <FormItem>
+                    {(itemId) => (
+                        <React.Fragment>
+                            <FormLabel htmlFor={itemId}>Payment method</FormLabel>
+                            <Select
+                                value={form.payment_method}
+                                onValueChange={(payment_method) => setForm(prev => ({ ...prev, payment_method }))}
+                            >
+                                <SelectTrigger data-active={Boolean(form.payment_method)}>
+                                    <SelectValue placeholder="Select payment method" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {PAYMENT_METHOD.map((payment, i) => (
+                                        <SelectItem key={i} value={payment}>{payment}</SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                            <FormFieldError>{retrieveError("payment_method").message}</FormFieldError>
+                        </React.Fragment>
+                    )}
+                </FormItem>
+                <div className="flex justify-end pt-5">
+                    <Button type="submit">
+                        <div className="flex items-center gap-x-2">
+                            <FaCheck className="text-lg" />
+                            <span>Save</span>
                         </div>
-                        <FormFieldError>{retrieveError("customer_name").message}</FormFieldError>
-                    </React.Fragment>
-                )}
-            </FormItem>
-            <FormItem>
-                {(itemId) => (
-                    <React.Fragment>
-                        <FormLabel htmlFor={itemId}>Date</FormLabel>
-                        <Input
-                            id={itemId}
-                            type="date"
-                            value={dayjs(form.date).format("YYYY-MM-DD")}
-                            onChange={(e) => {
-                                const date = e.target.valueAsDate!
-                                setForm((prev) => ({ ...prev, date }))
-                            }}
-                        />
-                        <FormFieldError>{retrieveError("date").message}</FormFieldError>
-                    </React.Fragment>
-                )}
-            </FormItem>
-            <FormItem>
-                {(itemId) => (
-                    <React.Fragment>
-                        <FormLabel htmlFor={itemId}>Phone</FormLabel>
-                        <Input
-                            id={itemId}
-                            value={form.phone}
-                            onChange={(e) => {
-                                const value = e.target.value
-                                const sanitize = Utils.sanitizedNonDigits(value)
-                                const phone = Utils.phoneFormat(sanitize)
-                                setForm((prev) => ({ ...prev, phone }))
-                            }}
-                        />
-                        <FormFieldError>{retrieveError("phone").message}</FormFieldError>
-                    </React.Fragment>
-                )}
-            </FormItem>
-            <FormItem>
-                {(itemId) => (
-                    <React.Fragment>
-                        <FormLabel htmlFor={itemId}>Receipt number</FormLabel>
-                        <Input
-                            id={itemId}
-                            value={form.receipt_number}
-                            onChange={(e) => {
-                                const receipt_number = e.target.value!
-                                setForm((prev) => ({ ...prev, receipt_number }))
-                            }}
-                        />
-                        <FormFieldError>{retrieveError("receipt_number").message}</FormFieldError>
-                    </React.Fragment>
-                )}
-            </FormItem>
-            <FormItem>
-                {(itemId) => (
-                    <React.Fragment>
-                        <FormLabel htmlFor={itemId}>Payment method</FormLabel>
-                        <Select
-                            value={form.payment_method}
-                            onValueChange={(payment_method) => setForm(prev => ({ ...prev, payment_method }))}
-                        >
-                            <SelectTrigger data-active={Boolean(form.payment_method)}>
-                                <SelectValue placeholder="Select payment method" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                {PAYMENT_METHOD.map((payment, i) => (
-                                    <SelectItem key={i} value={payment}>{payment}</SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                        <FormFieldError>{retrieveError("payment_method").message}</FormFieldError>
-                    </React.Fragment>
-                )}
-            </FormItem>
-            <div className="flex justify-end pt-5">
-                <Button type="submit">
-                    <div className="flex items-center gap-x-2">
-                        <FaCheck className="text-lg" />
-                        <span>Save</span>
-                    </div>
-                </Button>
-            </div>
-        </Form >
+                    </Button>
+                </div>
+            </Form >
+        </React.Fragment>
     )
 }
 
@@ -192,10 +195,10 @@ function Options({ isShow, onChange }:
                 ref!.style.bottom = -(height + 5) + "px"
             }
         }}
-            className="absolute -bottom-44 shadow-md w-1/2 rounded-lg bg-white border z-50 p-2 space-y-2"
+            className="absolute -bottom-44 shadow-md w-full md:w-1/2 rounded-lg bg-white border z-50 p-2 space-y-2"
         >
             <div
-                className="hover:bg-background text-[0.8rem] space-y-1 p-2 rounded-md"
+                className="hover:bg-background text-xs md:text-[0.8rem] space-y-1 p-2 rounded-md"
                 role="button"
                 onClick={onChange({ customer_name: "Hendri Alqori", phone: "6289111121112" })}
             >

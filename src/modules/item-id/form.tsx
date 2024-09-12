@@ -61,7 +61,7 @@ export default function ItemForm() {
     }
 
     return (
-        <Form onSubmit={submit} className="col-span-4 xl:col-span-3">
+        <Form onSubmit={submit} className="col-span-6 md:col-span-4 xl:col-span-3">
             <FormItem>
                 {(itemId) => (
                     // ID item field

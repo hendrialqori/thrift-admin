@@ -34,7 +34,7 @@ export const FormFieldError = ({ children, className, ...props }: React.Componen
     if (!Boolean(children)) return null
     
     return (
-        <p className={cn("text-red-500 text-[0.8rem] font-medium", className)}
+        <p className={cn("text-red-500 text-xs md:text-[0.8rem] font-medium", className)}
             {...props}>
             {children}
         </p>

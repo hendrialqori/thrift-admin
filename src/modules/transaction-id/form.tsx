@@ -59,13 +59,16 @@ export default function TransactionForm() {
     }
 
     return (
-        <Form onSubmit={submit} className="col-span-4 xl:col-span-3">
+        <Form
+            onSubmit={submit}
+            className="col-span-6 md:col-span-4 xl:col-span-3"
+        >
             <FormItem>
                 {(itemId) => (
                     // ID item field
                     <React.Fragment>
                         <FormLabel htmlFor={itemId}>ID</FormLabel>
-                        <p className="text-sm select-none font-medium">SFX-1234-555</p>
+                        <p className="text-xs md:text-sm select-none font-medium">SFX-1234-555</p>
                     </React.Fragment>
                 )}
             </FormItem>
@@ -156,12 +159,12 @@ export default function TransactionForm() {
                 )}
             </FormItem>
             {isUpdate && (
-                <div className="flex justify-end pt-3 gap-5">
+                <div className="flex flex-col md:flex-row justify-end pt-3 gap-5">
                     <Button variant="desctruction" type="button">
-                    <div className="flex items-center gap-x-2">
-                        <FiTrash className="text-lg"/>
-                        <span>Delete</span>
-                    </div>
+                        <div className="flex items-center gap-x-2">
+                            <FiTrash className="text-lg" />
+                            <span>Delete</span>
+                        </div>
                     </Button>
                     <Button
                         variant="secondary"
