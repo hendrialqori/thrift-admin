@@ -9,7 +9,7 @@ export default function Transaction() {
     return (
         <React.Fragment>
             <Header />
-            <div className="p-9">
+            <div className="p-bodyPaddingMd xl:p-bodyPadding mt-4 xl:mt-0">
                 <div className="w-full xl:max-w-2xl grid grid-cols-2 gap-3" aria-label="filter-container">
                     <InputSearchTransactions />
                     <DatePicker />

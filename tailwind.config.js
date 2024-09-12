@@ -13,10 +13,14 @@ export default {
       },
       fontFamily: {
         Inter: ["Inter", "sans-serif"]
+      },
+      spacing: {
+        bodyPadding: "var(--body-padding)",
+        bodyPaddingMd: "var(--body-padding-md)"
       }
     },
   },
   plugins: [require('@tailwindcss/forms')],
-  darkMode: "false"
+  darkMode: "false",
 }
 

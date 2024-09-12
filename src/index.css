@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --body-padding: 2rem;
+    --body-padding-md: 1rem;
+    /* --bodyPaddingSm: 4px; */
+}

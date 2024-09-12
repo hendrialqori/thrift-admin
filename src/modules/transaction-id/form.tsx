@@ -59,7 +59,7 @@ export default function TransactionForm() {
     }
 
     return (
-        <Form onSubmit={submit} className="col-span-3">
+        <Form onSubmit={submit} className="col-span-4 xl:col-span-3">
             <FormItem>
                 {(itemId) => (
                     // ID item field

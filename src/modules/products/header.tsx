@@ -9,7 +9,7 @@ export default function Header() {
     const navigateTo = () => navigate("/products/add")
 
     return (
-        <header className="w-full flex justify-between items-center border-b border-[#EDEDF0] px-5 h-14 border">
+        <header className="w-full flex justify-between items-center border-b border-[#EDEDF0] px-5 h-14 border-y">
             <Breadcrumb>
                 <BreadcrumbItem>
                     <BreadcrumbPage>
@@ -18,9 +18,9 @@ export default function Header() {
                 </BreadcrumbItem>
             </Breadcrumb>
             <Button variant="secondary" onClick={navigateTo}>
-                <div className="flex items-center gap-x-4">
+                <div className="flex items-center gap-x-2 lg:gap-x-4">
                     <IoMdAdd className="text-xl" />
-                    <span>Add new batch</span>
+                    <span aria-hidden role="presentation">Add new batch</span>
                 </div>
             </Button>
         </header>

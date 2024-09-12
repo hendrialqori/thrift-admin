@@ -2,7 +2,10 @@ import ItemCard from "./item-card";
 
 export default function ItemList() {
     return (
-        <div className="grid grid-col-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4">
+            <ItemCard />
+            <ItemCard />
+            <ItemCard />
             <ItemCard />
         </div>
     )

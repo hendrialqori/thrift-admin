@@ -13,6 +13,8 @@ import { GENDER, IS_UPDATE_ITEM_PARAMS, SIZE } from "#/constant";
 import * as Utils from "#/lib/utils"
 import { useSearchParams } from "react-router-dom";
 import useFormError from "#/hooks/use-form-error";
+import { IoMdClose } from "react-icons/io";
+import { FaCheck } from "react-icons/fa6";
 
 const initialForm = {
     id: "",
@@ -59,7 +61,7 @@ export default function ItemForm() {
     }
 
     return (
-        <Form onSubmit={submit} className="col-span-3">
+        <Form onSubmit={submit} className="col-span-4 xl:col-span-3">
             <FormItem>
                 {(itemId) => (
                     // ID item field
@@ -170,14 +172,16 @@ export default function ItemForm() {
                             formError.clear()
                         }}
                     >
-                        {/* <div className="flex items-center gap-x-3">
-                            <IoMdClose className="text-xl" />
+                        <div className="flex items-center gap-x-2">
+                            <IoMdClose className="text-lg" />
                             <span>Cencel</span>
-                        </div> */}
-                        Cencel
+                        </div>
                     </Button>
                     <Button type="submit">
-                        Save changes
+                        <div className="flex items-center gap-x-2">
+                            <FaCheck className="text-lg" />
+                            <span>Save changes</span>
+                        </div>
                     </Button>
                 </div>
             )}

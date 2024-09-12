@@ -6,7 +6,7 @@ export default function Products() {
     return (
         <React.Fragment>
             <Header />
-            <div className="p-9 flex flex-col gap-4">
+            <div className="p-bodyPaddingMd xl:p-bodyPadding flex flex-col gap-4 mt-4 xl:mt-0">
                 <BatchCard />
                 <BatchCard />
                 <BatchCard />

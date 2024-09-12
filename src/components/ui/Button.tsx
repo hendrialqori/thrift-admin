@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot"
 import { cn } from "#/lib/utils";
 
-const buttonVariants = cva("flex justify-center items-center rounded-xl", {
+const buttonVariants = cva("flex justify-center items-center rounded-lg", {
     variants: {
         variant: {
             primary: "bg-primary active:outline outline-blue-600 text-white",
@@ -12,7 +12,6 @@ const buttonVariants = cva("flex justify-center items-center rounded-xl", {
         },
         size: {
             default: "py-2 px-4 text-sm",
-            sm: "text-xs"
         }
     },
     defaultVariants: {

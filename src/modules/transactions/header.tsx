@@ -9,7 +9,7 @@ export default function Header() {
     const navigateTo = () => navigate("/transactions/add")
 
     return (
-        <header className="w-full flex justify-between items-center border-b border-[#EDEDF0] px-5 h-14 border">
+        <header className="w-full flex justify-between items-center border-b border-[#EDEDF0] px-5 h-14 border-y">
             <Breadcrumb>
                 <BreadcrumbItem>
                     <BreadcrumbPage>

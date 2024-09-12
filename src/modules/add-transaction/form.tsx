@@ -172,7 +172,7 @@ export default function TransactionForm() {
                 <Button type="submit">
                     <div className="flex items-center gap-x-2">
                         <FaCheck className="text-lg" />
-                        <span>Save data</span>
+                        <span>Save</span>
                     </div>
                 </Button>
             </div>

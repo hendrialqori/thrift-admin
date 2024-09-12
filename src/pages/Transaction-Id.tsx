@@ -7,7 +7,7 @@ export default function TransactionId() {
     return (
         <React.Fragment>
             <Header />
-            <div className="p-9 grid grid-cols-6">
+            <div className="p-bodyPaddingMd xl:p-bodyPadding mt-4 xl:mt-0 grid grid-cols-6 gap-4 xl:gap-0 pb-40 xl:pb-0">
                 <div className="col-span-2 flex flex-col items-center justify-center space-y-5 h-max">
                     <Image
                         src="/baju.jpg"

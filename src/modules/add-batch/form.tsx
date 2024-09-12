@@ -4,6 +4,7 @@ import useFormError from "#/hooks/use-form-error";
 import { Form, FormFieldError, FormItem, FormLabel } from "#/components/ui/form";
 import { Input } from "#/components/ui/input";
 import { Button } from "#/components/ui/button";
+import { IoMdArrowForward } from "react-icons/io";
 
 import { ZodError } from "zod";
 import { batchFormScheme } from "#/validations/batch-form-scheme"
@@ -105,14 +106,17 @@ export default function BatchForm() {
                             type="number"
                             value={form.quantity}
                             onChange={(e) => setForm((prev) => ({ ...prev, quantity: e.target.valueAsNumber }))}
-                            />
+                        />
                         <FormFieldError>{retrieveError("quantity").message}</FormFieldError>
                     </React.Fragment>
                 )}
             </FormItem>
             <div className="flex justify-end pt-5">
-                <Button type="submit">
-                    Continue process
+                <Button>
+                    <div className="flex items-center gap-x-4">
+                        <span>Continue process</span>
+                        <IoMdArrowForward className="text-xl" />
+                    </div>
                 </Button>
             </div>
         </Form >
