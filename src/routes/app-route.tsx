@@ -24,7 +24,13 @@ function appRoutes() {
                             <Route path=":itemId" element={<Page.ItemId />} />
                         </Route>
 
-                        <Route path="add" element={<Page.AddBatch />} />
+                        <Route path="batch">
+                            <Route index element={<Page.AddBatch />} />
+                            
+                            <Route path="add" element={<Page.AddProduct />} />
+                        </Route>
+
+
                     </Route>
 
                     <Route path="transactions">

@@ -26,7 +26,7 @@ export default function Header() {
                 </Breadcrumb>
                 <Button
                     variant="secondary"
-                    onClick={navigateTo("/products/add")}
+                    onClick={navigateTo("/products/batch")}
                 >
                     <div className="flex items-center gap-x-2 lg:gap-x-4">
                         <IoMdAdd className="text-xl" />
@@ -39,7 +39,7 @@ export default function Header() {
             <HeaderMobile
                 center={<p className="text-sm font-semibold">Product</p>}
                 right={
-                    <Link to="/products/add">
+                    <Link to="/products/batch">
                         <IoMdAdd className="text-xl" />
                     </Link>
                 }

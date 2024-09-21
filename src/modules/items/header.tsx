@@ -40,7 +40,7 @@ export default function Header() {
                 </Breadcrumb>
                 <Button
                     variant="secondary"
-                    onClick={navigateTo("/product/add")}
+                    onClick={navigateTo("/products/batch")}
                 >
                     <div className="flex items-center gap-x-4">
                         <IoMdAdd className="text-xl" />

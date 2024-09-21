@@ -7,3 +7,8 @@
     --body-padding-md: 1rem;
     /* --bodyPaddingSm: 4px; */
 }
+
+* > [aria-label="overlay"] {
+    z-index: 2;
+    position: relative;
+}

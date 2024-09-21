@@ -11,6 +11,7 @@ import { batchFormScheme } from "#/validations/batch-form-scheme"
 
 import * as Utils from "#/lib/utils"
 import dayjs from "dayjs"
+import { useNavigate } from "react-router-dom";
 
 const initialForm = {
     id: "",
@@ -22,6 +23,7 @@ const initialForm = {
 export default function BatchForm() {
     const [form, setForm] = React.useState(initialForm)
     const formError = useFormError()
+    const navigate = useNavigate()
 
     const retrieveError = formError.retrieve<keyof typeof form>
 
@@ -33,6 +35,8 @@ export default function BatchForm() {
         try {
             const dataValidation = batchFormScheme.parse(form)
             console.log(dataValidation)
+
+            navigate("/products/batch/add")
         } catch (error) {
             if (error instanceof ZodError) {
                 const fieldErrors = error.flatten().fieldErrors

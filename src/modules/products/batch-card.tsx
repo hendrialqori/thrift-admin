@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa6";
 
-type Props = {
-    id: number
-    name: string;
-    pieces: string;
-    date: string;
-}
+// type Props = {
+//     id: number
+//     name: string;
+//     pieces: string;
+//     date: string;
+// }
 
 export default function BatchCard() {
     return (

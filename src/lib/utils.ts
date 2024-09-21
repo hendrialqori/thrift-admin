@@ -1,5 +1,6 @@
 import clsx from "clsx"
 import { twMerge } from "tw-merge"
+import { v4 as uuidv4 } from 'uuid';
 
 export const cn = clsx
 
@@ -18,3 +19,5 @@ export const phoneFormat = (value: string) => {
 export const numberFormat = (value: string) => {
     return new Intl.NumberFormat("id-ID").format(Number(value))
 }
+
+export const uuid = () => uuidv4()
