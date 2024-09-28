@@ -1,6 +1,6 @@
 import React from "react";
-import { AnimatePresence, motion } from "framer-motion"
 import { CgSpinner } from "react-icons/cg";
+import Portal from "./portal";
 
 export const PageLoading = () => {
     return (
@@ -14,19 +14,9 @@ export const PageLoading = () => {
 }
 
 export const OverlayLoading = ({ show, children }: { show: boolean, children: React.ReactNode }) => {
-    if (show) {
-        return (
-            <AnimatePresence>
-                <motion.div
-                    initial={{ opacity: 0.5 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0.5 }}
-                    transition={{ duration: 0.2 }}
-                    className="fixed inset-0 flex justify-center items-center bg-black/80"
-                >
-                    {children}
-                </motion.div>
-            </AnimatePresence>
-        )
-    }
+    return (
+        <Portal isOpen={show}>
+            {children}
+        </Portal>
+    )
 }

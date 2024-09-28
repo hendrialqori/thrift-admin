@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import { twMerge } from "tw-merge"
+import { twMerge } from "tailwind-merge"
 import { v4 as uuidv4 } from 'uuid';
 
 export const cn = clsx

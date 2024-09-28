@@ -6,10 +6,6 @@ import { AnimatePresence, motion } from "framer-motion"
 
 function Content({ children }: { children: React.ReactNode }) {
 
-    const cloneChildren = React.isValidElement(children)
-
-    if (!cloneChildren) throw new Error("Not valid element")
-
     return ReactDOM.createPortal(
         <motion.section
             className="fixed inset-0 flex items-center justify-center z-50"
@@ -18,7 +14,11 @@ function Content({ children }: { children: React.ReactNode }) {
             exit={{ opacity: 0, top: -30 }}
             transition={{ duration: 0.1 }}
         >
-          {children}
+            <div
+                className="z-[2] max-h-screen overflow-y-auto w-full flex justify-center py-5 px-2 md:px-0"
+                aria-label="content container">
+                {children}
+            </div>
             <div
                 className="absolute inset-0 bg-black/80"
                 aria-label="overlay" />
@@ -28,15 +28,15 @@ function Content({ children }: { children: React.ReactNode }) {
 }
 
 
-type OverlayProps = {
+type PortalProps = {
     isOpen: boolean;
     onClose?: () => void
     children: React.ReactNode
 }
 
-export default function Overlay({ isOpen, onClose, children }: OverlayProps) {
+export default function Portal({ isOpen, onClose, children }: PortalProps) {
 
-    // set overvlow document body
+    // set overflow document body
     React.useEffect(() => {
         if (isOpen) {
             document.body.style.overflowY = "hidden";

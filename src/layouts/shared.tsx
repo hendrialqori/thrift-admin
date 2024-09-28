@@ -19,7 +19,7 @@ export default function SharedLayout() {
             {/* end container */}
 
             {/* table and mobile mode */}
-            <StickyMenu />
+            {/* <StickyMenu /> */}
         </main>
     )
 }
